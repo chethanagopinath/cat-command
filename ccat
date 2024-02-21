@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+import sys
+
+def ccat():
+    ccat_input = []
+
+    for arg in sys.argv:
+        ccat_input.append(arg)
+    
+    allowed_options = {'-', '-b', '-n'}
+
+    if '.txt' in ccat_input[1]:
+        # open file 
+        with open(ccat_input[1]) as reader1:
+            print(reader1.read())
+
+        if len(ccat_input) == 3 and '.txt' in ccat_input[2]:
+            with open(ccat_input[2]) as reader2:
+                print(reader2.read())
+        return
+
+    # this would also work if .txt was not present
+    if ccat_input[1] not in allowed_options:
+        print("Invalid args passed to ccat, please re-check")
+
+    else:
+        if ccat_input[1] == '-':
+            for line in sys.stdin:
+                sys.stdout.write(line)
+
+        elif ccat_input[1] == '-n':
+            for i, line in enumerate(sys.stdin):
+                line_number = i + 1
+                line_with_number = str(line_number) + " " + line
+                sys.stdout.write(line_with_number)
+
+if __name__ == "__main__":
+    ccat()
