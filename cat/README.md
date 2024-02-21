@@ -1,6 +1,13 @@
 # cat-command
 
-### command examples in demo
+### Description
+From `man cat`:
+
+> cat -- concatenate and print files
+
+> The cat utility reads files sequentially, writing them to the standard output. The file operands are processed in command-line order. If file is a single dash (`-') or absent, cat reads from the standard input...
+
+### Command examples in demo
 ```shell
 ccat test.txt
 head -n1 test.txt | ccat -
